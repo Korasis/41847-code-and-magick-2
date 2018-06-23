@@ -84,26 +84,26 @@ function renderSimilarItems() {
 }
 
 // ф-я, смотрящая за нажатием на ESC
-var onPopupEscPress = function(evt) {
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE && document.activeElement !== userNameInput) {
     closePopup();
   }
 };
 
 // открытие окна персонажа
-var openPopup = function() {
+var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };
 
 // закрытие окна персонажа
-var closePopup = function() {
+var closePopup = function () {
   setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
 // обработчик неверно заполненного инпута с именем персонажа
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
@@ -126,49 +126,49 @@ userNameInput.addEventListener('input', function (evt) {
 });
 
 // обработчик клика по иконке юзера
-setupOpen.addEventListener('click', function() {
+setupOpen.addEventListener('click', function () {
   openPopup();
 });
 
 // обработчик нажатия на Enter при фокусе на иконке юзера
-setupOpen.addEventListener('keydown', function(evt) {
+setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
 });
 
 // обработчик клика по крестику окна юзера
-setupClose.addEventListener('click', function() {
+setupClose.addEventListener('click', function () {
   closePopup();
 });
 
 // обработчик нажатия на Enter при фокусе на крестике окна юзера
-setupClose.addEventListener('keydown', function(evt) {
+setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
 });
 
 // рандомно меняем цвет мантии персонажа
-wizardCoatElement.addEventListener('click', function() {
+wizardCoatElement.addEventListener('click', function () {
   var randomCoatColorIndex = getRandomInt(0, coatColors.length - 1);
   wizardCoatElement.style.fill = coatColors[randomCoatColorIndex];
   setup.querySelector('input[name=coat-color]').value = coatColors[randomCoatColorIndex];
-})
+});
 
 // рандомно меняем цвет глаз персонажа
-wizardEyesElement.addEventListener('click', function() {
+wizardEyesElement.addEventListener('click', function () {
   var randomEyesColorIndex = getRandomInt(0, eyesColors.length - 1);
   wizardEyesElement.style.fill = eyesColors[randomEyesColorIndex];
   setup.querySelector('input[name=eyes-color]').value = eyesColors[randomEyesColorIndex];
-})
+});
 
 // рандомно меняем цвет фаербола персонажа
-fireballElement.addEventListener('click', function() {
+fireballElement.addEventListener('click', function () {
   var randomFireballColorIndex = getRandomInt(0, fireballColors.length - 1);
   fireballElement.style.backgroundColor = fireballColors[randomFireballColorIndex];
   setup.querySelector('input[name=fireball-color]').value = fireballColors[randomFireballColorIndex];
-})
+});
 
 
 // показываем модалку персонажа
